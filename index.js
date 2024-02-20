@@ -3,10 +3,11 @@ const xml2js = require('xml2js');
 const xpath = require('xpath');
 const { DOMParser } = require('xmldom');
 const { SignedXml } = require('xml-crypto');
-const fs = require('fs');
+require('dotenv').config();
 
 // Assume the IdP's public certificate is stored in 'idp-cert.pem'
-const idpCert = fs.readFileSync('idp-cert.pem', 'utf8');
+//const idpCert = process.env.IDP_CERT;
+const idpCert = process.env.IDP_CERT.replace(/\\n/g, '\n');
 
 const app = express();
 const port = 3001;
